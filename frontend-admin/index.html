@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Панель администратора</title>
+  <link rel="stylesheet" href="stylesadmin.css">
+  <script src="admin.js" defer></script>
+</head>
+<body>
+<h1>Управление товарами</h1>
+<form id="addForm">
+  <input type="text" id="name" placeholder="Название" required>
+  <input type="number" id="price" placeholder="Цена" required>
+  <textarea id="description" placeholder="Описание"></textarea>
+  <button type="submit">Добавить</button>
+</form>
+<div id="admin-products"></div>
+</body>
+</html>
