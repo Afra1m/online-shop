@@ -46,11 +46,15 @@ npm install
 
 3. Запуск серверов
 Запусти сервер каталога товаров:
+
 cd backend-user
+
 node server.js
 
 Запусти сервер админ-панели:
+
 cd ../backend-admin
+
 node server.js
 
 Теперь открой в браузере:
