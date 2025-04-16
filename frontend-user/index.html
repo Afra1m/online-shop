@@ -3,12 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Каталог товаров</title>
+  <title>Магазин - Пользователь</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<h1>Каталог товаров</h1>
-<div id="products"></div>
-<script src="script.js"></script>
+  <div class="container">
+    <header>
+      <h1>Магазин</h1>
+      <div class="chat-toggle" onclick="toggleChat()">Чат поддержки</div>
+    </header>
+
+    <main>
+      <div class="products-container" id="products"></div>
+    </main>
+
+    <div class="chat-container" id="chatContainer" style="display: none;">
+      <div class="chat-header">
+        <h3>Чат поддержки</h3>
+        <button onclick="toggleChat()">×</button>
+      </div>
+      <div class="chat-messages" id="chatMessages"></div>
+      <div class="chat-input">
+        <input type="text" id="messageInput" placeholder="Введите сообщение...">
+        <button onclick="sendMessage()">Отправить</button>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
