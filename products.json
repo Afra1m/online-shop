@@ -1,0 +1,29 @@
+[
+  {
+    "id": "1745070976167",
+    "name": "Iphone 17 pro max",
+    "price": 200000,
+    "description": "new",
+    "categories": [
+      "Phones"
+    ]
+  },
+  {
+    "id": "1745071051785",
+    "name": "PC",
+    "price": 250000,
+    "description": "4090, 32 gb , AmD 7800",
+    "categories": [
+      "PC"
+    ]
+  },
+  {
+    "id": "1745071081865",
+    "name": "Air Pods 4",
+    "price": 25000,
+    "description": "the newest",
+    "categories": [
+      "peripherals"
+    ]
+  }
+]

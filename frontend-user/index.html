@@ -10,22 +10,25 @@
   <div class="container">
     <header>
       <h1>Магазин</h1>
-      <div class="chat-toggle" onclick="toggleChat()">Чат поддержки</div>
+      <button class="chat-toggle" onclick="toggleChat()">Чат поддержки</button>
     </header>
 
     <main>
+      <div class="categories-container" id="categories"></div>
       <div class="products-container" id="products"></div>
     </main>
 
-    <div class="chat-container" id="chatContainer" style="display: none;">
-      <div class="chat-header">
-        <h3>Чат поддержки</h3>
-        <button onclick="toggleChat()">×</button>
+    <div class="chat-container" id="chatContainer">
+      <div class="chat-header" onclick="toggleChat()">
+        <span>Чат поддержки</span>
+        <span>×</span>
       </div>
-      <div class="chat-messages" id="chatMessages"></div>
-      <div class="chat-input">
-        <input type="text" id="messageInput" placeholder="Введите сообщение...">
-        <button onclick="sendMessage()">Отправить</button>
+      <div class="chat-content">
+        <div class="chat-messages" id="chatMessages"></div>
+        <div class="chat-input">
+          <input type="text" id="messageInput" placeholder="Введите сообщение..." onkeypress="handleKeyPress(event)">
+          <button onclick="sendMessage()">Отправить</button>
+        </div>
       </div>
     </div>
   </div>

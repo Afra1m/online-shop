@@ -4,17 +4,40 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Панель администратора</title>
-  <link rel="stylesheet" href="stylesadmin.css">
-  <script src="admin.js" defer></script>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<h1>Управление товарами</h1>
-<form id="addForm">
-  <input type="text" id="name" placeholder="Название" required>
-  <input type="number" id="price" placeholder="Цена" required>
-  <textarea id="description" placeholder="Описание"></textarea>
-  <button type="submit">Добавить</button>
-</form>
-<div id="admin-products"></div>
+  <div class="container">
+    <header>
+      <h1>Панель администратора</h1>
+    </header>
+
+    <main>
+      <div class="admin-panel">
+        <div class="products-management">
+          <h2>Управление товарами</h2>
+          <div class="add-product-form">
+            <h3>Добавить товар</h3>
+            <input type="text" id="productName" placeholder="Название товара">
+            <input type="number" id="productPrice" placeholder="Цена">
+            <textarea id="productDescription" placeholder="Описание"></textarea>
+            <input type="text" id="productCategories" placeholder="Категории (через запятую)">
+            <button onclick="addProduct()">Добавить товар</button>
+          </div>
+          <div class="products-list" id="productsList"></div>
+        </div>
+
+        <div class="chat-container">
+          <h2>Чат поддержки</h2>
+          <div class="chat-messages" id="adminChatMessages"></div>
+          <div class="chat-input">
+            <input type="text" id="adminMessageInput" placeholder="Введите сообщение..." onkeypress="handleAdminKeyPress(event)">
+            <button onclick="sendAdminMessage()">Отправить</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>

@@ -1,33 +1,28 @@
 openapi: 3.0.0
 info:
-  title: API Панели Администратора
-  description: API для управления товарами интернет-магазина
+  title: API Магазина
   version: 1.0.0
+  description: API для управления товарами в интернет-магазине
 
 servers:
-  - url: http://localhost:3000
-    description: Локальный сервер разработки
+  - url: http://localhost:3001
+    description: Сервер администратора
 
 paths:
   /api/products:
     get:
-      summary: Получить список всех товаров
-      description: Возвращает массив товаров из `products.json`
+      summary: Получение списка товаров
       responses:
         '200':
-          description: Успешный ответ, массив товаров
+          description: Список товаров
           content:
             application/json:
               schema:
                 type: array
                 items:
                   $ref: '#/components/schemas/Product'
-        '500':
-          description: Ошибка загрузки данных
-
     post:
-      summary: Добавить новый товар
-      description: Добавляет товар в `products.json`
+      summary: Добавление нового товара
       requestBody:
         required: true
         content:
@@ -41,19 +36,16 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Product'
-        '500':
-          description: Ошибка сохранения
 
   /api/products/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
     put:
-      summary: Редактировать товар
-      description: Обновляет информацию о товаре по ID
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: integer
+      summary: Обновление товара
       requestBody:
         required: true
         content:
@@ -67,27 +59,18 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Product'
-        '404':
-          description: Товар не найден
-        '500':
-          description: Ошибка сохранения
-
     delete:
-      summary: Удалить товар
-      description: Удаляет товар по ID
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: integer
+      summary: Удаление товара
       responses:
         '200':
           description: Товар успешно удален
-        '404':
-          description: Товар не найден
-        '500':
-          description: Ошибка при удалении
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
 
 components:
   schemas:
@@ -96,26 +79,37 @@ components:
       properties:
         id:
           type: integer
-          example: 1
         name:
           type: string
-          example: "MacBook Air 17 pro"
         price:
           type: number
-          example: 230000
         description:
           type: string
-          example: "Лёгкий как пушинка"
+        categories:
+          type: array
+          items:
+            type: string
+      required:
+        - name
+        - price
+        - description
+        - categories
 
     ProductInput:
       type: object
       properties:
         name:
           type: string
-          example: "Iphone 17 pro max"
         price:
           type: number
-          example: 110000
         description:
           type: string
-          example: "Новейший и свежайший"
+        categories:
+          type: array
+          items:
+            type: string
+      required:
+        - name
+        - price
+        - description
+        - categories
