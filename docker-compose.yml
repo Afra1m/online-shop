@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  backend-user:
+    build: ./backend-user
+    ports:
+      - "4000:4000"
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ./products.json:/app/products.json
+    networks:
+      - app-network
+
+  backend-admin:
+    build: ./backend-admin
+    ports:
+      - "4001:4001"
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ./products.json:/app/products.json
+    networks:
+      - app-network
+
+  frontend-user:
+    build: ./frontend-user
+    ports:
+      - "3000:3000"
+    environment:
+      - REACT_APP_API_URL=http://localhost:4000
+      - REACT_APP_WS_URL=ws://localhost:4000
+    depends_on:
+      - backend-user
+    networks:
+      - app-network
+
+  frontend-admin:
+    build: ./frontend-admin
+    ports:
+      - "3001:3001"
+    environment:
+      - REACT_APP_API_URL=http://localhost:4001
+      - REACT_APP_WS_URL=ws://localhost:4001
+    depends_on:
+      - backend-admin
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge 
